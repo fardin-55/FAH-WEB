@@ -1,0 +1,119 @@
+﻿
+> shieldscan@0.1.0 build
+> next build
+
+  Ôû▓ Next.js 14.2.35
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully
+   Linting and checking validity of types ...
+node.exe : 
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" 
+"C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:St 
+   ring) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Failed to compile.
+
+./app/design-system/page.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./app/layout.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./app/page.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./app/providers.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/scanner/ScoreGauge.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/Accordion.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/Badge.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/Button.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/Card.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/Dialog.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/Input.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/Reveal.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/Skeleton.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/Switch.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/Tabs.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/ThemeToggle.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/Toast.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./components/ui/Tooltip.tsx
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+./lib/utils.ts
+1:1  Error: Definition for rule 
+'@typescript-eslint/no-explicit-any' was not 
+found.  @typescript-eslint/no-explicit-any
+
+info  - Need to disable some ESLint rules? Learn 
+more here: https://nextjs.org/docs/basic-features
+/eslint#disabling-rules

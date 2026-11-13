@@ -1,0 +1,11 @@
+# ShieldScan Permanent Project Rules
+
+1. Follow the approved plan (stack, folder structure, design system) exactly. Do not change the stack without asking me.
+2. Premium quality bar: every UI must feel like Linear / Vercel / Stripe level polish. No generic template look, no default unstyled components.
+3. Use TypeScript strictly, no `any`. Reusable components, clean separation of UI / logic / services.
+4. Every page and component must be responsive (mobile-first), accessible (WCAG AA, keyboard + aria), and support dark and light mode through design tokens, never hardcoded colors.
+5. Every async UI needs loading, empty, and error states.
+6. Never hardcode secrets. Use env variables and keep `.env.example` updated.
+7. Security first: validate all inputs with Zod, protect against SSRF on any user-supplied URL, rate limit public endpoints.
+8. Work in small steps. After each task: run lint and type-check, fix errors, then summarize what you did and what I should test. Do not start the next phase until I say so.
+9. Use only real, working code. No placeholder lorem ipsum in final UI copy; write real, persuasive product copy.
