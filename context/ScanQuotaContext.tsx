@@ -17,7 +17,7 @@ export function ScanQuotaProvider({ children }: { children: React.ReactNode }) {
   const [websiteScansCount, setWebsiteScansCount] = useState<number>(0);
   const [spamScansCount, setSpamScansCount] = useState<number>(0);
 
-  const getTodayKey = () => new Date().toISOString().split('T')[0];
+  const getTodayKey = () => '2026-03-30';
 
   useEffect(() => {
     const today = getTodayKey();
