@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Check, Zap, Sparkles } from 'lucide-react';
 import { GlassCard } from '@/components/common/GlassCard';
 import { useAuth } from '@/context/AuthContext';
+import { Accordion, AccordionItem } from '@/components/ui/Accordion';
+import { PRICING_CONFIG } from '@/config/pricing';
 
 export function PricingPage() {
   const [isAnnual, setIsAnnual] = useState(false);
   const { user, setIsUpgradeModalOpen } = useAuth();
-  const isPro = user?.tier === 'pro';
 
   return (
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -28,64 +29,51 @@ export function PricingPage() {
             <div className={`w-6 h-6 rounded-full bg-cyan-500 shadow-md transition-transform ${isAnnual ? 'translate-x-6' : 'translate-x-0'}`} />
           </button>
           <span className={`text-sm font-semibold ${isAnnual ? 'text-white' : 'text-slate-400'}`}>
-            Annual <span className="text-[10px] bg-emerald-500/20 text-emerald-400 font-bold px-2 py-0.5 rounded-full">Save 20%</span>
+            Annual <span className="text-[10px] bg-emerald-500/20 text-emerald-400 font-bold px-2 py-0.5 rounded-full">{PRICING_CONFIG.monthlyDiscount}</span>
           </span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <GlassCard className="flex flex-col justify-between p-8 bg-slate-900 border border-slate-800">
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-4">Free Plan</h3>
-            <div className="text-4xl font-extrabold text-white mb-6">
-              $0 <span className="text-sm font-normal text-slate-400">/ forever</span>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-24">
+        {PRICING_CONFIG.plans.map((plan, i) => (
+          <GlassCard key={i} glow={plan.highlight ? "indigo" : undefined} className={`p-8 ${plan.highlight ? 'border-indigo-500/40 relative' : ''}`}>
+            {plan.highlight && (
+              <div className="absolute top-0 right-0 bg-gradient-to-l from-indigo-500 to-cyan-600 text-slate-950 text-[10px] uppercase tracking-widest font-extrabold px-4 py-1 rounded-bl-xl">
+                Most Popular
+              </div>
+            )}
+            <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+            <p className="text-slate-400 text-sm mb-6 min-h-[3rem]">{plan.description}</p>
+            <div className="text-4xl font-extrabold text-white mb-8">
+              ${isAnnual ? plan.price.yearly / 12 : plan.price.monthly}
+              <span className="text-sm font-normal text-slate-400">/mo</span>
             </div>
-            <ul className="space-y-4 text-sm text-slate-300 mb-8">
-              <li className="flex items-center space-x-3"><Check className="w-4 h-4 text-emerald-400" /><span>10 daily heuristic website checks</span></li>
-              <li className="flex items-center space-x-3"><Check className="w-4 h-4 text-emerald-400" /><span>10 daily spam & phishing checks</span></li>
-              <li className="flex items-center space-x-3"><Check className="w-4 h-4 text-emerald-400" /><span>Basic threat report breakdown</span></li>
+            <ul className="space-y-4 mb-8">
+              {plan.features.map(f => (
+                <li key={f} className="flex items-center gap-3 text-sm text-slate-300">
+                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0" /> {f}
+                </li>
+              ))}
             </ul>
-          </div>
-          <button disabled className="w-full py-3.5 rounded-xl bg-slate-800 text-slate-500 font-semibold cursor-not-allowed">
-            Current Plan
-          </button>
-        </GlassCard>
-
-        <GlassCard glow="cyan" className="flex flex-col justify-between p-8 border-cyan-500/40 relative bg-slate-900">
-          <div className="absolute top-0 right-0 bg-gradient-to-l from-cyan-500 to-indigo-600 text-slate-950 text-[10px] uppercase tracking-widest font-extrabold px-4 py-1 rounded-bl-xl">
-            Recommended
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-4 flex items-center space-x-2">
-              <span>Pro Plan</span>
-              <Zap className="w-5 h-5 text-cyan-400 fill-cyan-400" />
-            </h3>
-            <div className="text-4xl font-extrabold text-white mb-6">
-              ${isAnnual ? '12' : '15'} <span className="text-sm font-normal text-slate-400">/ month</span>
-            </div>
-            <ul className="space-y-4 text-sm text-slate-300 mb-8">
-              <li className="flex items-center space-x-3"><Check className="w-4 h-4 text-cyan-400" /><span>Unlimited daily website & spam scans</span></li>
-              <li className="flex items-center space-x-3"><Check className="w-4 h-4 text-cyan-400" /><span>Deep WHOIS, SSL, and domain age checks</span></li>
-              <li className="flex items-center space-x-3"><Check className="w-4 h-4 text-cyan-400" /><span>Bulk URL batch testing & CSV exports</span></li>
-              <li className="flex items-center space-x-3"><Check className="w-4 h-4 text-cyan-400" /><span>Formatted PDF security reports</span></li>
-            </ul>
-          </div>
-          {isPro ? (
-            <div className="w-full py-3.5 rounded-xl bg-emerald-500/20 text-emerald-400 font-bold text-center border border-emerald-500/30">
-              ✓ Pro Membership Active
-            </div>
-          ) : (
             <button
-              onClick={() => setIsUpgradeModalOpen(true)}
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-slate-950 font-bold shadow-xl hover:scale-105 transition-all flex items-center justify-center space-x-2"
-            >
-              <Zap className="w-4 h-4 fill-slate-950" />
-              <span>Upgrade to Pro Now</span>
+              onClick={() => plan.highlight && setIsUpgradeModalOpen(true)}
+              className={`w-full py-3 rounded-xl font-bold ${plan.highlight ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-white hover:bg-slate-700'}`}>
+              {plan.buttonText}
             </button>
-          )}
-        </GlassCard>
+          </GlassCard>
+        ))}
       </div>
+
+      <section className="max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold text-white mb-10 text-center">Frequently Asked Questions</h2>
+        <div className="space-y-4">
+          {PRICING_CONFIG.faq.map((item, i) => (
+            <Accordion key={i}>
+              <AccordionItem title={item.q}>{item.a}</AccordionItem>
+            </Accordion>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
-

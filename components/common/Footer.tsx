@@ -1,46 +1,43 @@
 import React from 'react';
-import { ShieldCheck, Github, Twitter, Lock } from 'lucide-react';
+import { Shield, Github, Twitter, Lock } from 'lucide-react';
+import Link from 'next/link';
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-800/80 bg-slate-950/80 text-slate-400 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-        <div className="space-y-4">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center">
-              <ShieldCheck className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-lg font-bold text-white">TrustScan</span>
+    <footer className="border-t border-slate-800 bg-slate-950 py-16 px-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-12">
+        <div className="col-span-2 md:col-span-1">
+          <div className="flex items-center space-x-2 mb-4">
+            <Shield className="w-6 h-6 text-cyan-400" />
+            <span className="font-bold text-lg text-white">SpamShield</span>
           </div>
-          <p className="text-sm">
-            Next-generation URL trust checking, homoglyph spoofing defense, and email spam detection for modern web users.
-          </p>
+          <p className="text-slate-400 text-sm">Enterprise security intelligence.</p>
         </div>
-
         <div>
-          <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Core Tools</h4>
-          <ul className="space-y-2.5 text-sm">
-            <li><a href="#checker" className="hover:text-cyan-400 transition-colors">Website Trust Checker</a></li>
-            <li><a href="#spam" className="hover:text-cyan-400 transition-colors">Spam & Phishing Detector</a></li>
+          <h4 className="font-bold text-white mb-4">Product</h4>
+          <ul className="space-y-2 text-slate-400 text-sm">
+            <li><Link href="/check">Checker</Link></li>
+            <li><Link href="/pricing">Pricing</Link></li>
+            <li><Link href="/docs">API</Link></li>
           </ul>
         </div>
-
         <div>
-          <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Privacy & Security</h4>
-          <ul className="space-y-2.5 text-sm">
-            <li className="flex items-center space-x-1.5"><Lock className="w-3.5 h-3.5 text-emerald-400" /><span>100% In-Browser Heuristics</span></li>
-            <li><span className="text-slate-500">Zero Data Logging Policy</span></li>
+          <h4 className="font-bold text-white mb-4">Company</h4>
+          <ul className="space-y-2 text-slate-400 text-sm">
+            <li><Link href="/contact">Contact</Link></li>
+            <li><Link href="/privacy">Privacy</Link></li>
           </ul>
         </div>
-
         <div>
-          <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Pro Tier</h4>
-          <p className="text-sm mb-2">Unlock unlimited scans, WHOIS inspection, and bulk checking.</p>
+          <h4 className="font-bold text-white mb-4">Legal</h4>
+          <ul className="space-y-2 text-slate-400 text-sm">
+            <li><Link href="/terms">Terms</Link></li>
+            <li><Link href="/cookies">Cookies</Link></li>
+          </ul>
         </div>
       </div>
-
-      <div className="max-w-7xl mx-auto pt-8 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-        <p>© {new Date().getFullYear()} TrustScan Inc. All rights reserved.</p>
+      <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
+        © 2026 SpamShield. All rights reserved.
       </div>
     </footer>
   );
