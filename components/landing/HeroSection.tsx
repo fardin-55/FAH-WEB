@@ -37,7 +37,7 @@ export function HeroSection({ onStartScanning }: HeroSectionProps) {
 
         <Reveal delay={0.1}>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.1] mb-6">
-            Instantly Detect <span className="bg-gradient-to-r from-cyan-400 via-indigo-300 to-indigo-500 bg-clip-text text-transparent">Deceptive Links</span> & Phishing Scams.
+            Instantly Detect Spam, Phishing & Malicious <span className="text-gradient">Websites</span>.
           </h1>
         </Reveal>
 

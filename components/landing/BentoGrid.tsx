@@ -54,7 +54,7 @@ export function BentoGrid() {
             </div>
             <h4 className="text-lg font-bold text-white mb-2">Zero Data Logging</h4>
             <p className="text-slate-300 text-xs">
-              Phase 1 runs entirely in your browser. Your typed URLs and sensitive emails are never transmitted to any external server.
+              We don't sell your data. Scanned URLs and pasted text are processed only to generate your result, and are never shared with advertisers.
             </p>
           </div>
         </GlassCard>

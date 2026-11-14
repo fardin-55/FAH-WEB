@@ -21,14 +21,14 @@ export function Navbar({ currentTab, onNavigate }: NavbarProps) {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
+    <header className="sticky top-0 z-50 w-full bg-[#070b14]/80 backdrop-blur-xl border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <div onClick={() => handleNavClick('landing')} className="flex items-center space-x-3 cursor-pointer group">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
             <ShieldCheck className="w-6 h-6 text-slate-950 font-black" />
           </div>
           <div>
-            <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+            <span className="text-xl font-bold tracking-tight text-white">
               ShieldScan
             </span>
             <span className="block text-[10px] uppercase tracking-widest text-slate-400 font-semibold">
