@@ -1,8 +1,8 @@
 'use client';
+
+import SecurityShield from '@/components/three/SecurityShield';
 import React, { useState } from 'react';
-import { ArrowRight, Globe, Sparkles, CheckCircle2, ShieldAlert } from 'lucide-react';
-import { GlowCard } from '@/components/ui/GlowCard';
-import { ScoreGauge } from '@/components/scanner/ScoreGauge';
+import { ArrowRight, Globe, Sparkles, ShieldAlert } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 
 interface HeroSectionProps {
@@ -34,6 +34,8 @@ export function HeroSection({ onStartScanning }: HeroSectionProps) {
             <span>ShieldScan AI Phishing & Spam Intelligence</span>
           </div>
         </Reveal>
+        
+        <SecurityShield height={400} />
 
         <Reveal delay={0.1}>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.1] mb-6">

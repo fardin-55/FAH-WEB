@@ -14,12 +14,13 @@ interface WebsiteCheckerTabProps {
 
 export function WebsiteCheckerTab({ initialUrl }: WebsiteCheckerTabProps) {
   const { user, setIsUpgradeModalOpen } = useAuth();
-  const [scanResult, setScanResult] = useState<UrlScanResult | null>(() => {
+  const [scanResult, setScanResult] = useState<UrlScanResult | null>(null);
+
+  React.useEffect(() => {
     if (initialUrl) {
-      return analyzeUrl(initialUrl, user?.tier === 'pro');
+      analyzeUrl(initialUrl, user?.tier === 'pro').then(setScanResult);
     }
-    return null;
-  });
+  }, [initialUrl, user?.tier]);
 
   const handleExport = (format: 'csv' | 'pdf') => {
     if (user?.tier !== 'pro') {

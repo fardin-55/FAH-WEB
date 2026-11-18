@@ -16,7 +16,7 @@ export function UrlInputForm({ onScanComplete, initialUrl = '' }: UrlInputFormPr
   const { user, setIsUpgradeModalOpen } = useAuth();
   const { websiteScansRemaining, consumeWebsiteScan } = useScanQuota();
 
-  const handleScan = (e?: React.FormEvent) => {
+  const handleScan = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!url.trim()) return;
 
@@ -26,12 +26,12 @@ export function UrlInputForm({ onScanComplete, initialUrl = '' }: UrlInputFormPr
     }
 
     setIsAnalyzing(true);
-    setTimeout(() => {
+    (async () => {
       consumeWebsiteScan();
-      const result = analyzeUrl(url.trim(), user?.tier === 'pro');
+      const result = await analyzeUrl(url.trim(), user?.tier === 'pro');
       setIsAnalyzing(false);
       onScanComplete(result);
-    }, 400);
+    })();
   };
 
   return (

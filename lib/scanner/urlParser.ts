@@ -2,7 +2,8 @@ import { KNOWN_BRANDS, SUSPICIOUS_TLDS, KNOWN_SHORTENERS } from './urlRules';
 import { detectHomoglyphs } from './homoglyphs';
 import { UrlScanResult, CheckItem, RiskLevel } from '@/types/scanner.types';
 
-export function analyzeUrl(rawUrl: string, isPro: boolean = false): UrlScanResult {
+import { checkSafeBrowsing } from './checks/google-safe-browsing';
+export async function analyzeUrl(rawUrl: string, isPro: boolean = false): Promise<UrlScanResult> {
   let cleanedUrl = rawUrl.trim();
   
   if (!cleanedUrl.startsWith('http://') && !cleanedUrl.startsWith('https://')) {
@@ -38,6 +39,38 @@ export function analyzeUrl(rawUrl: string, isPro: boolean = false): UrlScanResul
   const protocol = parsed.protocol;
   const checks: CheckItem[] = [];
   let riskScore = 0;
+
+  // Safe Browsing check
+  const sbResult = await checkSafeBrowsing(cleanedUrl);
+  if (sbResult.status === 'fail') {
+    riskScore += 90;
+    checks.push({
+      id: 'gsb_threat',
+      category: 'reputation',
+      title: `Google Safe Browsing: ${sbResult.threatType?.replace('_', ' ') || 'Threat'} detected`,
+      description: `URL is flagged by Google Safe Browsing as: ${sbResult.message}`,
+      status: 'failed',
+      impact: 'high'
+    });
+  } else if (sbResult.status === 'unavailable') {
+    checks.push({
+      id: 'gsb_error',
+      category: 'reputation',
+      title: 'Google Safe Browsing: Service Unavailable',
+      description: 'PARTIAL SCAN: Safe Browsing could not be checked. Result is incomplete.',
+      status: 'warning',
+      impact: 'low'
+    });
+  } else {
+    checks.push({
+      id: 'gsb_clean',
+      category: 'reputation',
+      title: 'Google Safe Browsing: No threats found',
+      description: 'URL is not flagged in Google threat databases.',
+      status: 'passed',
+      impact: 'low'
+    });
+  }
 
   if (protocol === 'http:') {
     riskScore += 25;

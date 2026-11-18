@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+import { ShieldLoader } from '@/components/loader/ShieldLoader';
 import { Providers } from './providers';
 
 const inter = Inter({
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="min-h-screen antialiased selection:bg-brand-500 selection:text-white">
+        <ShieldLoader />
         <Providers>{children}</Providers>
       </body>
     </html>

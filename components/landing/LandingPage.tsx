@@ -5,8 +5,10 @@ import { HowItWorks } from './HowItWorks';
 import { FeaturesSection } from './FeaturesSection';
 import { DemoPreview } from './DemoPreview';
 import { BentoGrid } from './BentoGrid';
+import { PricingSection } from '../pricing/PricingSection';
+import { TestimonialsSection } from './testimonials/TestimonialsSection';
 import { FaqSection } from './FaqSection';
-import { CtaBanner } from './CtaBanner';
+import { FinalCTA } from './FinalCTA';
 
 interface LandingPageProps {
   onStartScanning: (url?: string) => void;
@@ -23,8 +25,11 @@ export function LandingPage({ onStartScanning, onNavigatePricing, onNavigateDash
       <FeaturesSection />
       <DemoPreview />
       <BentoGrid />
+      <PricingSection />
+      <TestimonialsSection />
       <FaqSection />
-      <CtaBanner onGetStarted={onNavigateDashboard} onUpgrade={onNavigatePricing} />
+      <FinalCTA />
     </div>
   );
 }
+
